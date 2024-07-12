@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -297,7 +298,7 @@ namespace Core.Editor
                     return DateTime.Now;
                 if (type == typeof(Guid))
                     return Guid.NewGuid();
-/*
+
                 if (type.IsGenericType)
                 {
                     //Debug.Log("GENERIC TYPE");
@@ -309,14 +310,14 @@ namespace Core.Editor
 
                         for (int i = 0; i < 3; i++)
                         {
-                            var element = GetSampleValue(elementType, depth + 1);
+                            var element = GetSampleValue(elementType);
                             list.Add(element);
                         }
 
                         return list;
                     }
                 }
-              */
+              
                 //if (type.IsClass /*&& type != typeof(string)*/ )
                 //{
                 //    var nestedInstance = Activator.CreateInstance(type);
