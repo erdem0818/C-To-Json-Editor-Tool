@@ -23,8 +23,8 @@ namespace Core.Editor
             private string _jsonText = "";
             private Vector2 _csharpScrollPos;
             private Vector2 _jsonScrollPos;
-            private bool _serializeAllSeparately;
-            private bool _tryInitialize;
+            private bool _serializeAllSeparately = true;
+            private bool _tryInitialize = true;
 
             [MenuItem("Tools/C# to Json Converter")]
             public static void ShowWindow()
@@ -318,12 +318,12 @@ namespace Core.Editor
                     }
                 }
               
-                //if (type.IsClass /*&& type != typeof(string)*/ )
-                //{
-                //    var nestedInstance = Activator.CreateInstance(type);
-                //    InitializeProperties(nestedInstance, depth + 1);
-                //    return nestedInstance;
-                //}
+                if (type.IsClass /*&& type != typeof(string)*/ )
+                {
+                    var nestedInstance = Activator.CreateInstance(type);
+                    InitializeProperties(nestedInstance);
+                    return nestedInstance;
+                }
                 
                 return null;
             }
